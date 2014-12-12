@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <html>
@@ -15,24 +18,46 @@
         
     </head>
     <body>
+        <?php
+        include('./funciones.php');
+        $conexion = conectaBBDD();        
+        $usua = $_SESSION['usuario_sesion'];
+        ?>
+        <!--/////// MENÉ DE ARRIBA ////////////-->
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <a class="brand active" href="index.php">SomosHotel</a>
+                <ul class="nav">
+                    <li><a><?php echo $usua; ?></a></li>
+                    <li><a href="gestionUsuarios.php">GESTIÓN EMPLEADOS</a></li>
+                    <li><a href="gestionClientes.php">GESTIÓN CLIENTES</a></li>
+                    <li><a href="gestionHabitaciones.php">GESTIÓN HABITACIONES</a></li>
+                </ul>
+            </div>
+            <div class="page-header">
+                <h1 id="a">Gestión Empleados<small>Inserte, elimine o modifique</small></h1>
+            </div>
+            
+        </div>
+        <!--//// FIN DEL MENÚ DE ARRIBA /////-->
+        
         <!--Este es el pequeño navegar de la pagina, en cada uno de
         los LI, ponemos una funcion y le pasamos un parametro, dependiendo del parámetro, 
         a la hora de clickear en alguno de ellos, cargará uno u otro, todo gracias a un
         switch creado en javascript
         -->
         <ul class="nav nav-pills">
-            <li id="a" onclick="carga(1);" ><a href="#">Inserción Usuario</a></li>
+            <li onclick="carga(1);" ><a href="#">Inserción Usuario</a></li>
             <li onclick="carga(2);" id="2"><a href="#">Busqueda Usuario</a></li>
             <li onclick="carga(3);" id="3"><a href="#">Borrado Usuario</a></li>
             <li onclick="carga(4);" id="4"><a href="#">Modificado Usuario</a></li>
         </ul>
         
-        <div class="container-fluid">            
-           
-                <div class="span12" id="contenido">
-                    
-                              
-<!--///////////////////// INSERCIÓN USUARIO //////////////////////////////////-->                
+        <div class="container-fluid">
+
+            <div class="row-fluid" id="contenido">
+
+                <!--///////////////////// INSERCIÓN USUARIO //////////////////////////////////-->                
                 <div  id="insercionUsuario"> <!--Div bloque-->
                     <div class="row-fluid">                        
                         <div class="span8"><!--Dividimos la pantalla en dos, uno de 8 y otro de 4 donde saldrá el mensaje de confirmacion-->
@@ -65,12 +90,12 @@
                                         <td><label class="control-label" style="padding-right: 15px;">Contraseña:</label></td>
                                         <td><input type="password" class="control" id="pass" placeholder="Contraseña"></td>
                                     </tr>
-     
+
                                 </table>
                             </div>
-                                
-                                <div class="span6">
-                                    <table>
+
+                            <div class="span6">
+                                <table>
                                     <tr class="control-group">
                                         <td><label class="control-label" style="padding-right: 15px;">Nombre:</label></td>
                                         <td><input type="text" class="control" id="Nombre" placeholder="Nombre"></td>
@@ -95,63 +120,22 @@
                                         <td></td>
                                         <td><button type="submit" class="control btn btn-primary btn-block" id="insertarUsuario">Insertar</button></td>
                                     </tr>
-                                    </table>
-                                </div>                                   
+                                </table>
+                            </div>                                   
                         </div>
                         <div class="span4" id="mensaje"></div><!--Aqui cargará el mensaje de confirmación a través de un PHP-->
                     </div>
-                </div><!--FIN Div bloque-->
-<!--/////////////////////////// FIN INSERCIÓN USUARIO /////////////////////////////-->
+                </div>
 
-<!--/////////////////////////////// BUSQUEDA USUARIO ////////////////////////////////-->                
+                <!--/////////////////////////////// BUSQUEDA USUARIO ////////////////////////////////-->                
                 <div id="busquedaUsuario">
                     <div class="span4">
 
-                            <table>
-                                <tr class="control-group">
-                                    <td class="control-label" style="padding-right: 15px;">Tipo Búsqueda</td>
-                                    <td class="control">                            
-                                        <select id="seleccion">
-                                            <option value="1">Nombre</option>
-                                            <option value="2">Apellido</option>
-                                            <option value="3">DNI</option>
-                                            <option value="4">Departamento</option>
-                                            <option value="5">Fecha alta contrato</option>
-                                            <option value="6">Jefes Departamento</option>
-                                            <option value="7">Todos</option>
-                                            
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr class="control-group"> 
-                                    <td class="control-label" style="padding-right: 15px;">Texto a buscar</td>
-                                    <td class="control"><input type="text" class="form-control" id="TextoBuscador" placeholder=""></td>
-                                </tr>
-                                <tr class="control-group">
-                                    <td class="control-label" style="padding-right: 15px;"></td>
-                                    <td><button type="submit" class="btn btn-primary" id="botonBuscador">Buscar Usuario</button></td>
-                                </tr>
-                            </table>
-
-                        
-                    </div>
-                    <div class="span8" id="listaBusqueda">
-                    </div>
-                        
-                    
-                </div>
-                <!--//////////////////////////// FIN BUSQUEDA USUARIO ////////////////////////////-->
-
-                <!--////////////////////////// BORRADO USUARIO ////////////////////////////////////////-->
-                
-                <div  id="borradoUsuario">
-                    <div class="span4">
-                        <div class="row-fluid">
                         <table>
                             <tr class="control-group">
                                 <td class="control-label" style="padding-right: 15px;">Tipo Búsqueda</td>
                                 <td class="control">                            
-                                    <select id="seleccionBorrado">
+                                    <select id="seleccion">
                                         <option value="1">Nombre</option>
                                         <option value="2">Apellido</option>
                                         <option value="3">DNI</option>
@@ -165,13 +149,51 @@
                             </tr>
                             <tr class="control-group"> 
                                 <td class="control-label" style="padding-right: 15px;">Texto a buscar</td>
-                                <td class="control"><input type="text" class="form-control" id="TextoBuscadorBorrado" placeholder=""></td>
+                                <td class="control"><input type="text" class="form-control" id="TextoBuscador" placeholder=""></td>
                             </tr>
                             <tr class="control-group">
                                 <td class="control-label" style="padding-right: 15px;"></td>
-                                <td><button type="submit" class="btn btn-primary" id="botonBuscadorBorrado">Buscar Usuario</button></td>
-                            </tr>                            
+                                <td><button type="submit" class="btn btn-primary" id="botonBuscador">Buscar Usuario</button></td>
+                            </tr>
                         </table>
+
+
+                    </div>
+                    <div class="span8" id="listaBusqueda">
+                    </div>
+
+
+                </div>
+
+                <!--////////////////////////// BORRADO USUARIO ////////////////////////////////////////-->                
+                <div  id="borradoUsuario">
+                    <div class="span4">
+                        <div class="row-fluid">
+                            <table>
+                                <tr class="control-group">
+                                    <td class="control-label" style="padding-right: 15px;">Tipo Búsqueda</td>
+                                    <td class="control">                            
+                                        <select id="seleccionBorrado">
+                                            <option value="1">Nombre</option>
+                                            <option value="2">Apellido</option>
+                                            <option value="3">DNI</option>
+                                            <option value="4">Departamento</option>
+                                            <option value="5">Fecha alta contrato</option>
+                                            <option value="6">Jefes Departamento</option>
+                                            <option value="7">Todos</option>
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="control-group"> 
+                                    <td class="control-label" style="padding-right: 15px;">Texto a buscar</td>
+                                    <td class="control"><input type="text" class="form-control" id="TextoBuscadorBorrado" placeholder=""></td>
+                                </tr>
+                                <tr class="control-group">
+                                    <td class="control-label" style="padding-right: 15px;"></td>
+                                    <td><button type="submit" class="btn btn-primary" id="botonBuscadorBorrado">Buscar Usuario</button></td>
+                                </tr>                            
+                            </table>
                         </div>
                         <div class="row-fluid" id="confirmacionBorrado" style="padding-top: 20px;">
                             <h3>Está seguro que quiere borrar al empleado?</h3>
@@ -184,46 +206,24 @@
                         </div>
                     </div>
                     <div class="span8" id="listaBusquedaBorrado"></div>   
-                    
-<!--                    <legend>Borrado de Usuario</legend>
-                    <form method="post">
-                        <label>Id:</label><input type="text" class="form-control" id="idBorrado" placeholder="ID">                    
-                    </form>
-                    <a data-toggle="modal" href="#example"><button type="submit" class="btn btn-primary" id="borrarUsuario">Borrar Usuario</button></a>
-                    <div id="DivBorrado" class="row-fluid"></div>-->
+
+                    <!--                    <legend>Borrado de Usuario</legend>
+                                        <form method="post">
+                                            <label>Id:</label><input type="text" class="form-control" id="idBorrado" placeholder="ID">                    
+                                        </form>
+                                        <a data-toggle="modal" href="#example"><button type="submit" class="btn btn-primary" id="borrarUsuario">Borrar Usuario</button></a>
+                                        <div id="DivBorrado" class="row-fluid"></div>-->
                 </div>
-                
- <!--//////////////////////////// FIN BORRADO USUARIO /////////////////////////////-->   
- 
-                </div> <!--fin div contenido--> 
+
+            </div> <!--fin div contenido--> 
         </div> <!--fin div container--> 
  
- 
- 
-<!--////////////////////////////////////// MODAL ////////////////////////////////////-->
-                    <div id="modalEmpleadorrrrrrr" class="modal hide fade in" style="display: none;">
-                        <div class="modal-header">
-                            <a data-dismiss="modal" class="close">×</a>
-                            <h3>Borrado Usuario</h3>
-                        </div>
-                        <div class="modal-body">
-                            <h4>El usuario ha sido borrado correctamente</h4>             
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
-                        </div>
-                    </div>
-                    
-<!--///////////////////////////// FIN MODAL /////////////////////////////////-->
-            
-
         <script>
             function carga(_var1){
                 switch(_var1){
                     case 1: 
                         $('#insercionUsuario').show("fast");
                         $('#busquedaUsuario,#borradoUsuario').hide();break;
-                        $( '#a' ).addClass( 'active' );
                     case 2: 
                         $('#busquedaUsuario').show("fast");
                         $('#insercionUsuario,#borradoUsuario').hide();break;               

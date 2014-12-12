@@ -28,9 +28,9 @@ session_start();
                 <a class="brand active" href="index.php">SomosHotel</a>
                 <ul class="nav">
                     <li><a><?php echo $usu; ?></a></li>
-                    <li><a onclick="enlaza(2);" href="#">GESTIÓN EMPLEADOS</a></li>
-                    <li><a onclick="enlaza(3);" href="#">GESTIÓN CLIENTES</a></li>
-                    <li><a onclick="enlaza(4);" href="#">GESTIÓN HABITACIONES</a></li>
+                    <li><a href="gestionUsuarios.php">GESTIÓN EMPLEADOS</a></li>
+                    <li><a href="gestionClientes.php">GESTIÓN CLIENTES</a></li>
+                    <li><a href="gestionHabitaciones.php">GESTIÓN HABITACIONES</a></li>
                 </ul>
             </div>
         </div>
@@ -38,24 +38,10 @@ session_start();
         
         <div class="container-fluid">
             <div class="page-header">
-                <h1 id="a">Gestión Empleados <small>Subtext for header</small></h1>
+<!--                <h1 id="a">Gestión Empleados <small>Subtext for header</small></h1>-->
             </div>
             <div class="row-fluid" id="divCentral"></div>
         </div>
-
-
-        <script>
-            
-            function enlaza(_val1){
-                switch(_val1){
-                    case 1:$('#divCentral').load("#");
-                    case 2:$('#divCentral').load("gestionUsuarios.php");$('#a').html("Gestión Empleados");break;
-                    case 3:$('#divCentral').load("gestionClientes.php");$('#a').html("Gestión Clientes");break;
-                    case 4:$('#divCentral').load("gestionHabitaciones.php");$('#a').html("Gestión Habitaciones");break;
-                }
-            }
-            
-        </script>
         
     </body>
 </html>

@@ -1,16 +1,3 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Zona Admin</title>
-        <meta name="viewport" content="width=device-width">
-        
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-        
-        <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-    </head>
-
 
 <?php
 include './funciones.php';
@@ -20,7 +7,7 @@ $tipoBusqueda = $_POST["tipoBusquedaBorrado"] ;
 $textoBusqueda = $_POST["textoBusquedaBorrado"] ;
 $n = 0;
 
-echo'<div id=p class="row-fluid">burrrr</div>';
+echo'<div id=p class="row-fluid"></div>';
 switch ($tipoBusqueda){
     case 1: 
        $consulta=$conexion->query("SELECT * FROM empleados WHERE Nombre = '$textoBusqueda'");

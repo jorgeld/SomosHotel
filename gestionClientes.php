@@ -12,6 +12,20 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
+     
+        <!--///// MENU NAVEGADOR ////////////-->
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <a class="brand active" href="index.php">SomosHotel</a>
+                <ul class="nav">
+                    <li><a><?php echo $usu; ?></a></li>
+                    <li><a href="gestionUsuarios.php">GESTIÓN EMPLEADOS</a></li>
+                    <li><a href="gestionClientes.php">GESTIÓN CLIENTES</a></li>
+                    <li><a href="gestionHabitaciones.php">GESTIÓN HABITACIONES</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--///////// FIN MENU /////////////////-->
         
           <div class="container-fluid">
             <div class="row-fluid">
