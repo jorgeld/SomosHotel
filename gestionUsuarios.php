@@ -15,7 +15,6 @@ session_start();
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         
-        
     </head>
     <body>
         <?php
@@ -36,8 +35,7 @@ session_start();
             </div>
             <div class="page-header">
                 <h1 id="a">Gestión Empleados<small>Inserte, elimine o modifique</small></h1>
-            </div>
-            
+            </div>            
         </div>
         <!--//// FIN DEL MENÚ DE ARRIBA /////-->
         

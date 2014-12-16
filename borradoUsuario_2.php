@@ -21,9 +21,7 @@ $alta = $fila["Fecha_alta"];
 
 $insercion_H= $conexion->query("INSERT INTO `empleados_historico`(`DNI`,`Nombre`,`Apellido_1`,`Apellido_2`,`Departamento`,`Jefe`,`Comentarios`,`Fecha_alta`,`Fecha_baja`) VALUES ('$dni','$nombre','$apellido1','$apellido2','$departamento','$jefe','$comentario','$alta',CURDATE())");
 $borrado = $conexion->query("DELETE FROM `empleados` WHERE ID=$id");
-if($borrado){
-    header("location:gestionUsuarios.php");
-}
+
 
 
 ?>

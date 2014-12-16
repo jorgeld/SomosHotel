@@ -18,9 +18,10 @@ switch ($tipoBusqueda){
              <th>2º Apellido</th>
              <th>Departamento</th>
              <th>Fecha Alta</th>';
-       while($fila=$consulta->fetch_assoc()){          
+       while($fila=$consulta->fetch_assoc()){ 
+           $id = $fila["ID"];
             echo'<tr>
-                    <td><a data-toggle="modal" href="#modalEmpleado'.$n.'" class="btn btn-primary" id="btn'.$n.'">O</a></td>
+                    <td><a class="btn btn-primary" id="btn'.$n.'" onclick="borrado('.$id.');">X</a></td>
                     <td>'.$fila["Nombre"].'</td>
                     <td>'.$fila["Apellido_1"].'</td>
                     <td>'.$fila["Apellido_2"].'</td>
@@ -41,8 +42,9 @@ switch ($tipoBusqueda){
              <th>Puesto</th>
              <th>Fecha Alta</th>';
        while($fila=$consulta->fetch_assoc()){
+           $id = $fila["ID"];
            echo'<tr>
-                    <td><a data-toggle="modal" href="#modalEmpleado'.$n.'" class="btn btn-primary" id="btn'.$n.'">O</a></td>
+                    <td><a class="btn btn-primary" id="btn'.$n.'" onclick="borrado('.$id.');">X</a></td>
                     <td>'.$fila["Nombre"].'</td>
                     <td>'.$fila["Apellido_1"].'</td>
                     <td>'.$fila["Apellido_2"].'</td>
@@ -64,8 +66,9 @@ switch ($tipoBusqueda){
              <th>Puesto</th>
              <th>Fecha Alta</th>';
        while($fila=$consulta->fetch_assoc()){
+           $id = $fila["ID"];
              echo'<tr>
-                    <td><a data-toggle="modal" href="#modalEmpleado'.$n.'" class="btn btn-primary" id="btn'.$n.'">O</a></td>
+                    <td><a class="btn btn-primary" id="btn'.$n.'" onclick="borrado('.$id.');">X</a></td>
                     <td>'.$fila["Nombre"].'</td>
                     <td>'.$fila["Apellido_1"].'</td>
                     <td>'.$fila["Apellido_2"].'</td>
@@ -87,8 +90,9 @@ switch ($tipoBusqueda){
              <th>Puesto</th>
              <th>Fecha Alta</th>';
        while($fila=$consulta->fetch_assoc()){
+           $id = $fila["ID"];
             echo'<tr>
-                    <td><a data-toggle="modal" href="#modalEmpleado'.$n.'" class="btn btn-primary" id="btn'.$n.'">O</a></td>
+                    <td><a class="btn btn-primary" id="btn'.$n.'" onclick="borrado('.$id.');">X</a></td>
                     <td>'.$fila["Nombre"].'</td>
                     <td>'.$fila["Apellido_1"].'</td>
                     <td>'.$fila["Apellido_2"].'</td>
@@ -109,8 +113,9 @@ switch ($tipoBusqueda){
              <th>Puesto</th>
              <th>Fecha Alta</th>';
        while($fila=$consulta->fetch_assoc()){
+           $id = $fila["ID"];
             echo'<tr>
-                    <td><a data-toggle="modal" href="#modalEmpleado'.$n.'" class="btn btn-primary" id="btn'.$n.'">O</a></td>
+                    <td><a class="btn btn-primary" id="btn'.$n.'" onclick="borrado('.$id.');">X</a></td>
                     <td>'.$fila["Nombre"].'</td>
                     <td>'.$fila["Apellido_1"].'</td>
                     <td>'.$fila["Apellido_2"].'</td>
@@ -131,8 +136,9 @@ switch ($tipoBusqueda){
              <th>Puesto</th>
              <th>Fecha Alta</th>';
        while($fila=$consulta->fetch_assoc()){
+           $id = $fila["ID"];
             echo'<tr>
-                    <td><a data-toggle="modal" href="#modalEmpleado'.$n.'" class="btn btn-primary" id="btn'.$n.'">O</a></td>
+                    <td><a class="btn btn-primary" id="btn'.$n.'" onclick="borrado('.$id.');">X</a></td>
                     <td>'.$fila["Nombre"].'</td>
                     <td>'.$fila["Apellido_1"].'</td>
                     <td>'.$fila["Apellido_2"].'</td>
